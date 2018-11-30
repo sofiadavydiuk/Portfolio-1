@@ -1,0 +1,1119 @@
+@import "bourbon"
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*
+	transition: 0.3s all ease
+	padding: 0
+	margin: 0
+	
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	border: 1px solid #ff6a6a
+	box-shadow: 0 0 5px #ff6a6a
+body input:required:valid,
+body textarea:required:valid
+	border: 1px solid $main
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.1)
+
+body
+	font-size: 16px
+	min-width: 960px
+	position: relative
+	line-height: 1.6
+	font-family: $default-font
+	// overflow: hidden
+	background-color: #000
+
+.bg_wrapper
+	width: 100%
+	height: 100%
+	display: inline-block
+	background-image: url(/img/body_back_blue.png) 
+	background-position: top center
+	background-size: cover!important
+	&.red
+		background-image: url(/img/body_back_red.png)
+
+@keyframes spin
+	0%
+		transform: rotate(0deg)
+	100%
+		transform: rotate(360deg)
+
+#loader-wrapper .loader-section
+	position: fixed
+	top: 0
+	width: 51%
+	height: 100%
+	background: #222222
+	z-index: 1000
+
+#loader-wrapper .loader-section.section-left
+	left: 0
+
+#loader-wrapper .loader-section.section-right
+	right: 0
+	
+#loader-wrapper
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: 1000
+
+#loader
+	display: block
+	position: relative
+	left: 50%
+	top: 50%
+	width: 150px
+	height: 150px
+	margin: -75px 0 0 -75px
+	border: 3px solid transparent
+	border-top-color: #3498db
+	border-radius: 50%
+	animation: spin 2s linear infinite
+	z-index: 1500
+
+#loader:before, #loader:after
+	content: ""
+	position: absolute
+	top: 5px
+	left: 5px
+	right: 5px
+	bottom: 5px
+	border: 3px solid transparent
+	border-top-color: #e74c3c
+	border-radius: 50%
+	animation: spin 3s linear infinite
+
+#loader:after
+	top: 15px
+	left: 15px
+	right: 15px
+	bottom: 15px
+	border-top-color: #f9c922
+	animation: spin 1.5s linear infinite
+
+.loaded #loader-wrapper .loader-section.section-left
+	transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+	transform: translateX(-100%)
+
+.loaded #loader-wrapper .loader-section.section-right
+	transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+	transform: translateX(100%)
+
+.loaded #loader
+	opacity: 0
+	transition: all 0.3s ease-out
+
+.loaded #loader-wrapper
+	visibility: hidden
+
+section
+	width: 960px
+
+a, a:focus
+	text-decoration: none
+	outline: none
+	cursor: pointer
+a:hover
+	text-decoration: underline
+
+ul
+	list-style-type: none
+
+.text
+	font-family: $default-font
+	color: #000
+	font-size: 17px
+
+.btn
+	height: 25px
+	border: none
+	cursor: pointer
+	display: inline-block
+	text-align: center
+	background-image: url(/img/btn_back_blue.png)
+	background-position: top center
+	background-size: 100% 100%
+	background-color: transparent
+	color: #fff
+	font-family: $ArialBold
+	font-size: 11px
+	font-weight: 700
+	line-height: 24px
+	padding: 0
+	&.red
+		background-image: url(/img/btn_back_red.png)
+	&:hover
+		transform: scale(1.1)
+		text-decoration: none
+		opacity: 0.85
+	&:focus
+		outline: none
+
+.blue, .red
+	background-position: top center
+	background-size: 100% 100%
+
+header
+	width: 960px
+	height: 445px
+	margin: 145px auto 0
+	.logo
+		width: 245px
+		height: 70px
+		margin-left: 35px
+		float: left
+		.logo_text_top, .logo_text_bot
+			color: #fff
+			margin: 0
+		.logo_text_top
+			font-family: $VegurBold
+			font-size: 72px
+			font-weight: 700
+			line-height: 20px
+			letter-spacing: -4px
+		.logo_text_bot
+			font-family: $ArialRegular
+			opacity: 0.3
+			font-size: 12px
+			font-weight: 400
+			line-height: 33px
+			white-space: nowrap
+			word-spacing: -1px
+			text-align: left
+			padding-left: 5px
+	.login_form
+		float: right
+		margin: -20px 0 0
+		user-select: none
+		p
+			margin: 0 15px 0 0
+			display: inline-block
+			color: #fff
+			font-family: $ArialRegular
+			font-size: 11px
+			font-weight: 400
+			line-height: 33px
+			cursor: pointer
+		input[name="search_phrase"]
+			padding-left: 5px
+			margin-right: 5px
+			&:focus
+				transform: scale(1.05)
+		.submit
+			width: 58px
+	
+	.nav_carousel
+		width: 960px
+		height: 87px
+		background-image: url(/img/nav_carousel_back_blue.png)
+		background-position: top left
+		background-size: 100% 100%
+		position: relative
+		top: 20px
+		&.red
+			background-image: url(/img/nav_carousel_back_red.png)
+	.header_nav
+		float: right
+		vertical-align: top
+		margin-top: -5px
+		.navbar
+			margin: 0
+			padding: 0
+			li:nth-child(1)
+				margin-right: 20px
+			li:nth-child(2)
+				margin-right: 42px
+			li:nth-child(3)
+				margin-right: 50px
+			li:nth-child(4)
+				margin-right: 22px
+			li
+				display: inline-block
+				margin-right: 10px
+				position: relative
+				top: 0
+				a
+					padding: 5px 10px
+					color: #fff
+					font-family: $ArialBold
+					font-size: 13px
+					font-weight: 200
+					white-space: nowrap
+					&:hover
+						text-decoration: none
+				&:hover
+					background-color: #000
+					.sub_nav
+						opacity: 1
+						display: inline-block
+				.sub_nav
+					display: none
+					opacity: 0
+					width: 140px
+					position: absolute
+					top: 25px
+					left: 0
+					background-color: #000
+					z-index: 5
+					li
+						display: block
+						width: 115px
+						border-bottom: 1px solid #262626
+						margin: 12px 14px
+						white-space: nowrap
+						&:last-of-type
+							border-bottom: 0
+							margin-bottom: 0
+						i
+							color: #fff
+							opacity: 0.2
+							vertical-align: top
+						a
+							color: #fff
+							font-family: $ArialBold
+							font-size: 11px
+							font-weight: 700
+							line-height: 18px
+							cursor: pointer
+							white-space: nowrap
+							padding: 0
+							vertical-align: top
+							margin-left: 5px
+							&:hover
+								text-decoration: underline
+
+	.header_carousel
+		height: 40px
+		padding-left: 55px
+		width: 905px
+		position: absolute
+		bottom: -5px
+		.slide	
+			white-space: nowrap
+			.text, a
+				display: inline-block
+			.text, a
+				font-family: $ArialBold
+				font-size: 12px
+				color: #fff
+			a
+				color: #717171
+		.owl-nav
+			position: absolute
+			top: 4px
+			left: 15px
+			.owl-prev, .owl-next
+				opacity: 0.8
+				background-color: #222222
+				border: 1px solid #2b363a
+				border-radius: 2px
+				width: 15px
+				height: 15px
+				position: relative
+				display: inline-block
+				&:hover
+					opacity: 1
+				i
+					color: #fff
+					opacity: 0.7
+					position: absolute
+					top: -1px
+					left: 3px
+	.news_blog
+		margin-top: 20px
+		position: relative
+		.left_part
+			display: inline-block
+			position: absolute
+			top: 0
+			left: 0
+			width: 601px
+			height: 338px
+			background: url(/img/news_left_part_back.png) top center no-repeat
+			background-size: cover
+			.featured
+				width: 137px
+				height: 37px
+				position: absolute
+				right: 0
+				top: 18px
+				text-indent: 15px
+				color: white
+				font-family: $ArialBold
+				font-size: 18px
+				font-weight: 700
+				line-height: 40px
+				text-transform: uppercase
+				background-image: url(/img/news_feature_back_blue.png)
+				&.red
+					background-image: url(/img/news_feature_back_red.png)
+			.text
+				width: 435px
+				height: 85px
+				padding-top: 8px
+				background: url(/img/news_left_text_back.png) top center no-repeat
+				font-family: $VegurBold
+				color: #fff
+				font-size: 48px
+				font-weight: 700
+				line-height: 38px
+				max-width: 430px
+				letter-spacing: -3px
+				word-spacing: 5px
+				position: absolute
+				bottom: 30px
+				left: 45px
+		.right_part
+			display: inline-block
+			background: url(/img/news_right_part_back.png) top center no-repeat
+			background-size: cover
+			width: 361px
+			height: 338px
+			position: absolute
+			right: 0
+			top: 0
+			.news_articles
+				width: 347px
+				height: 35px
+				margin: 20px 0 0 -12px
+				padding-left: 30px
+				text-align: center
+				background-image: url(/img/news_article_back_blue.png)
+				&.red
+					margin: 20px 0 0 -3px
+					padding-left: 20px
+					background-image: url(/img/news_article_back_red.png)
+				.article
+					height: 21px
+					display: inline-block
+					cursor: pointer
+					text-transform: uppercase
+					position: relative
+					top: 4px
+					color: #fff
+					font-family: $ArialBold
+					font-size: 11px
+					font-weight: 700
+					padding: 5px 15px 0
+					margin: 0
+					float: left
+					&:hover
+						text-decoration: none
+						background-color: #4e8eba
+					&.active
+						background-color: #4e8eba
+						&::after
+							content: ''
+							position: absolute
+							transform: translate(-50%,0)
+							left: 50%
+							bottom: -9px
+							border: 5px solid transparent
+							border-top: 5px solid #4e8eba
+					&.red
+						height: 23px
+						&:hover
+							background-color: #c60000
+						&.active
+							background-color: #c60000
+						&::after
+							border-top: 5px solid #c60000
+			.news_list
+				// display: none
+				visibility: hidden
+				opacity: 0
+				position: absolute
+				text-align: left
+				&.active
+					display: inline-block
+					opacity: 1
+					visibility: visible
+				li
+					border-bottom: 1px solid #222222
+					width: 315px
+					margin: 10px 0 0 20px
+					padding-bottom: 5px
+					color: red
+					&:last-of-type
+						border-bottom: 0
+					.text_top
+						font-family: $ArialBold
+						font-size: 13px
+						color: #fff
+						cursor: pointer
+						white-space: nowrap
+						overflow: hidden
+						text-overflow: ellipsis
+						position: relative
+						padding-left: 12px
+						&:hover
+							text-decoration: underline
+							color: orange
+						&:before
+							content: ""
+							position: absolute
+							top: 7px
+							left: 0
+							width: 7px
+							height: 8px
+							background: url(/img/news_list_marker.png) top center no-repeat
+							background-size: 100% 100%
+					.text_bot
+						font-family: $ArialRegular
+						font-size: 11px
+						color: #444444
+						padding-left: 13px
+						white-space: nowrap
+						a
+							color: #666666
+							text-decoration: underline
+							&:hover
+								color: orange
+
+.s_information
+	background: url(/img/information_back.png) top center no-repeat
+	margin: 30px auto 45px
+	white-space: nowrap
+	p
+		display: inline-block
+		font-family: $ArialRegular
+		font-size: 12px
+		color: #666666
+		font-weight: 400
+		margin: 0 20px 0 0
+	.block_1
+		margin-left: 20px
+		strong
+			color: #999
+			font-weight: 700
+	.block_2
+		a
+			color: #999
+			font-weight: 70
+			&:hover
+				color: orange
+	.block_3
+		strong
+			color: #999
+			font-weight: 400
+
+.s_find
+	margin: 0 auto
+	background-color: #000
+	.news_blog
+		display: inline-block
+		width: 300px
+		height: 350px
+		margin-left: 13px
+		position: relative
+		top: -13px
+		vertical-align: top
+		.news_articles
+			.article
+				display: inline-block
+				width: 92px
+				height: 22px
+				line-height: 22px
+				text-align: center
+				background: url(/img/find_news_article_back.png) no-repeat top left
+				background-size: 100% 22px
+				&:nth-child(2),&:nth-child(3)
+					margin-left: -2px
+				p
+					font-family: $ArialBold
+					font-size: 11px
+					font-weight: 700
+					color: #fff
+					opacity: 0.5
+				&.active
+					background: url(/img/find_news_article_back_active.png) no-repeat top left
+					background-size: 100% 22px
+					p
+						opacity: 1
+				&:hover
+					text-decoration: none
+					p
+						opacity: 1
+				&:nth-child(2)
+					width: 82px
+				&:nth-child(3)
+					width: 112px
+		
+		.news_list_wrapper
+			background: linear-gradient(to top, #000, #222)
+			width: 300px
+			height: 270px
+		.news_list
+			padding: 15px 0 0 25px
+			visibility: hidden
+			opacity: 0
+			width: 275px
+			position: absolute
+			top: 27px
+			left: 0
+			&.active
+				opacity: 1
+				visibility: visible
+			li
+				border-bottom: 1px solid #313131
+				margin-right: 45px
+				padding: 5px 0
+				&:last-of-type
+					border-bottom: 0
+			.text_top
+				font-family: $ArialBold
+				font-size: 13px
+				font-weight: 700
+				color: #fff
+				white-space: nowrap
+				&:hover
+					color: orange
+			.text_bot
+					font-family: $ArialRegular
+					font-size: 11px
+					color: #444444
+					white-space: nowrap
+					a
+						color: #666666
+						text-decoration: underline
+						&:hover
+							color: orange
+		.more_wrapper
+			position: absolute
+			width: 100%
+			bottom: 0
+			left: 0
+			.more
+				width: 87px
+				margin-left: 25px
+			.text
+				margin-left: 5px
+				display: inline-block
+				color: #555
+				font-family: $ArialRegular
+				font-size: 11px
+				font-weight: 400
+				line-height: 25px
+	.find_car
+		display: inline-block
+		vertical-align: top
+		margin-left: 15px
+		position: relative
+		.logo
+			display: inline-block
+			font-family: $VegurBold
+			font-weight: 700
+			line-height: 33px
+			font-size: 31px
+			color: #fff
+			position: absolute
+			top: -25px
+			left: 0
+			z-index: 15
+			.fa
+				vertical-align: bottom
+		.cars_list
+			display: inline-block
+			width: 615px
+			height: 260px
+			background: url(/img/find_cars_list_back.png) no-repeat top right
+			position: relative
+			top: -11px
+			.car_form
+				position: relative
+				left: 225px
+				top: 15px
+				width: 390px
+			.select_wrapper
+				width: 130px
+				height: 16px
+				margin-right: 10px
+				overflow: hidden
+				display: inline-block
+				position: relative
+				border: 1px solid #8a8a8a
+				border-radius: 5px
+				background-color: #fff
+				background-image: url(/img/find_select_arrow.png)
+				background-position: top right
+				background-repeat: no-repeat
+				background-size: 17px 100%
+				cursor: pointer
+				z-index: 10
+				&:nth-of-type(2)
+					width: 90px
+				&:nth-of-type(3)
+					width: 70px
+				select
+					background: transparent
+					position: absolute
+					top: 0
+					left: 0
+					width: 100%
+					height: 100%
+					text-indent: 7px
+					color: #000
+					font-family: $ArialRegular
+					font-size: 11px
+					font-weight: 400
+					z-index: 9
+					cursor: pointer
+					appearance: none
+					option[disabled]
+						display: none
+					&:focus
+						outline: none
+			.submit
+				background-color: transparent
+				border: none
+				color: white
+				font-family: $ArialBold
+				font-size: 11px
+				font-weight: 700
+				line-height: 15px
+				position: relative
+				top: -5px
+				cursor: pointer
+				&:hover
+					color: orange
+					text-decoration: underline
+					i
+						color: orange
+						text-decoration: underline
+				&:focus
+				outline: none
+		.cars_blog
+			display: inline-block
+			position: absolute
+			top: 56px
+			left: 20px
+			white-space: nowrap
+			li
+				width: 180px
+				display: inline-block
+				margin-right: 10px
+				.car_img
+					display: inline-block
+					width: 180px
+					height: 135px
+					cursor: pointer
+					position: relative
+					background: url(/img/cars_blog_1.jpg) no-repeat top left
+					background-size: cover
+					&::after
+						content: ""
+						position: absolute
+						right: 0
+						bottom: 0
+						width: 25px
+						height: 25px
+						background-color: #000
+						background-image: url(/img/find_car_magnifier.png)
+						background-repeat: no-repeat
+						background-position: center center
+				&:nth-of-type(2)
+					.car_img
+						background: url(/img/cars_blog_2.jpg) no-repeat top left
+						background-size: cover
+				&:nth-of-type(3)
+					.car_img
+						background: url(/img/cars_blog_3.jpg) no-repeat top left
+						background-size: cover
+			.article, .read_more
+				color: #fff
+				font-family: $ArialBold
+				font-size: 13px
+				font-weight: 700
+				line-height: 45px
+			.text
+				color: #666
+				font-family: $ArialRegular
+				font-size: 12px
+				font-weight: 400
+				line-height: 18px
+				white-space: normal
+			.read_more
+				font-size: 11px
+				&:hover
+					color: orange
+					text-decoration: underline
+					i
+						color: orange
+						text-decoration: underline
+	.find_carousel
+		width: 100%
+		height: 335px
+		position: relative
+		background-color: #000
+		*
+			transition: all 2s ease
+		.left_part
+			position: absolute
+			left: 0
+			top: 0
+			width: 50%
+			height: 100%
+			background-image: url(/img/find_slide_back.png)
+			background-repeat: no-repeat
+			background-size: 100% 220px
+			background-color: #FFF
+			&::after
+				content: ''
+				width: 14px
+				height: 30px
+				position: absolute
+				right: -13.5px
+				top: 54px
+				background-image: url(/img/find_slide_arrow.png)
+				background-repeat: no-repeat
+				background-position: top left
+				background-color: transparent
+				z-index: 16
+		.slide
+			position: absolute
+			left: 0
+			top: 0
+			overflow: visible
+			width: 100%
+			height: 220px
+			z-index: 15
+			visibility: hidden
+			opacity: 0
+			.article, .sub_text, .text
+				color: black
+				font-family: $VegurBold
+				font-size: 48px
+				font-weight: 700
+				line-height: 32px
+			.article
+				margin: 46px 0 0 40px
+				white-space: nowrap
+			.sub_text
+				width: 140px
+				font-family: $ArialBold
+				color: #fff
+				font-size: 11px
+				white-space: nowrap
+				overflow: hidden
+				text-overflow: ellipsis
+				background-color: #4e4e4e
+				margin: 10px 0 0 40px
+				line-height: 20px
+				padding-left: 5px
+				padding-top: 1px
+			.text
+				margin: 10px 0 0 40px
+				max-width: 400px
+				font-family: $ArialRegular
+				font-size: 13px
+				font-weight: 400
+				line-height: 18px
+				color: #666
+			.image
+				position: absolute
+				right: 0
+				top: 0
+				width: 50%
+				height: 335px
+				background: url(/img/find_slide_1_main.jpg) no-repeat top left
+				background-repeat: no-repeat
+				background-size: cover
+				z-index: 10
+			&.active
+				visibility: visible
+				opacity: 1
+		.slide_2
+			.image
+				background: url(/img/find_slide_2_main.jpg) no-repeat top left
+		.slide_3
+			.image
+				background: url(/img/find_slide_3_main.jpg) no-repeat top left
+
+		.controls
+			width: 50%
+			height: 115px
+			position: absolute
+			left: 0
+			bottom: 0
+			white-space: nowrap
+			.control
+				position: absolute
+				left: 0
+				top: 0
+				display: inline-block
+				width: 33%
+				height: 100%
+				background-image: url(/img/find_slide_1_control.jpg)
+				background-repeat: no-repeat
+				background-position: top left
+				background-size: cover
+				border-right: 2px solid #ccc
+				cursor: pointer
+			.control_2
+				background-image: url(/img/find_slide_2_control.jpg)
+				left: 160px
+			.control_3
+				background-image: url(/img/find_slide_3_control.jpg)
+				left: 320px
+		.dots
+			position: absolute
+			right: 40px
+			bottom: 40px
+			z-index: 20
+			.dot
+				display: inline-block
+				width: 12px
+				height: 12px
+				border: 1px solid #000
+				background-color: #FFF
+				opacity: 0.5
+				border-radius: 2px
+				cursor: pointer
+				transition: 0.3s all ease
+				&:hover
+					opacity: 0.8
+					transform: scale(1.2)
+				&.active
+					opacity: 1
+					&:hover
+						opacity: 1
+
+.s_features
+	height: 387px
+	margin: 45px auto 0
+	background: url(/img/features_back.png) no-repeat top left
+	background-size: cover
+	position: relative
+	.logo
+		font-family: $VegurBold
+		color: #fff
+		font-size: 24px
+		line-height: 33px
+		font-weight: 700
+		position: relative
+		top: -18px
+	.block
+		width: 300px
+		height: 300px
+		position: relative
+		margin-left: 17px
+		display: inline-block
+		.articles
+			position: absolute
+			top: -13px
+			right: 0
+			.article
+				display: inline-block
+				color: #aaa
+				font-family: $ArialBold
+				font-size: 11px
+				font-weight: 700
+				line-height: 26px
+				cursor: pointer
+				width: 60px
+				height: 24px
+				background-image: url(/img/find_news_article_back.png)
+				background-repeat: no-repeat
+				background-size: 100% 24px
+				text-align: center
+				&:hover
+					color: #fff
+					text-decoration: none
+				&.active
+					color: #fff
+					background-image: url(/img/find_news_article_back_active.png)
+		.content
+			width: 300px
+			height: 275px
+			position: absolute
+			top: 14px
+			left: 0px
+			background: url(/img/features_block_back.png) no-repeat top left
+			.inner
+				position: absolute
+				top: 0
+				left: 0
+				visibility: hidden
+				opacity: 0
+				&.active
+					visibility: visible
+					opacity: 1
+				.text
+					color: white
+					font-family: $ArialBold
+					font-size: 13px
+					font-weight: 700
+					line-height: 18px
+					margin: 15px 0 10px 25px
+					max-width: 220px
+				li, label
+					width: 250px
+					padding-left: 5px
+					margin: 0 0 2px 25px
+					color: #666
+					font-family: $ArialRegular
+					font-size: 12px
+					font-weight: 400
+					line-height: 30px
+					border-bottom: 1px solid #292929
+					display: block
+					cursor: pointer
+					&:last-of-type
+						border-bottom: none
+					&:hover
+						color: orange
+			.poll_form
+				input[type="radio"]
+					outline: none
+					position: relative
+					top: 2px
+					margin-right: 5px
+				.submit
+					width: 100px
+					margin-left: 25px
+					margin-top: 5px
+			.view
+				display: inline-block
+				color: #666
+				font-family: $ArialRegular
+				font-size: 11px
+				font-weight: 400
+				line-height: 30px
+				margin-left: 10px
+				&:hover
+					text-decoration: underline
+					color: orange
+			.newest
+				.text
+					font-size: 12px
+					white-space: nowrap
+					margin-bottom: 0
+				.text_lower
+					color: #666
+					font-size: 11px
+					font-weight: 400
+					line-height: 14px
+					font-family: $ArialRegular
+					margin-left: 25px
+			.gallery
+				margin: 12px 0 0 25px
+				a
+					display: inline-block
+					width: 80px
+					height: 80px
+					background-image: url(/img/feature_gallery_1_min.jpg)
+					background-size: cover
+				.item_2
+					background-image: url(/img/feature_gallery_2_min.jpg)
+				.item_3
+					background-image: url(/img/feature_gallery_3_min.jpg)
+				.item_4
+					background-image: url(/img/feature_gallery_4_min.jpg)
+				.item_5
+					background-image: url(/img/feature_gallery_5_min.jpg)
+				.item_6
+					background-image: url(/img/feature_gallery_6_min.jpg)
+			.bottom_part
+				position: absolute
+				bottom: 5px
+				left: 25px
+			.browse
+				width: 100px
+			.video
+				width: 250px
+				height: 140px
+				margin: 25px 0 0 25px
+				background: url(/img/feature_vid_back.png)
+				background-size: 100% 100%
+				cursor: pointer
+	.bottom_nav
+		position: absolute
+		width: 100%
+		bottom: 13px
+		ul
+			text-align: center
+			display: block
+			li
+				display: inline-block
+				border-right: 1px solid #666
+				height: 10px
+				vertical-align: top
+				padding: 0 15px
+				a
+					display: inline-block
+					vertical-align: top
+					font-family: $ArialRegular
+					color: #666
+					font-size: 11px
+					font-weight: 400
+					line-height: 11px
+					&:hover, &.active
+						text-decoration: underline
+						color: #fff
+
+footer
+	margin: 60px 0 165px 0 
+	.copyright
+		text-align: center
+		font-family: $ArialBold
+		font-size: 11px
+		font-weight: 700
+		line-height: 30px
+		color: #666
+		strong
+			color: #fff
+
+.squares
+	position: fixed
+	left: 15px
+	top: 60px
+	margin-top: -40px
+	z-index: 30
+	display: inline-block
+	.blue_square, .red_square
+		display: inline-block
+		font-family: $VegurBold
+		color: #fff
+		font-weight: 700
+		font-size: 16px
+		padding: 10px
+		border: 1px solid black
+		cursor: pointer
+		border-radius: 3px
+		margin-left: 5px
+		box-shadow: inset 0 0 3px rgba(0,0,0,0.5)
+		&:hover
+			opacity: 0.8
+			transform: scale(1.1)
+	.blue_square
+		background-color: #579bc2
+		outline: 1px solid #579bc2
+	.red_square
+		margin-top: 5px
+		background-color: #b60000
+		outline: 1px solid #b60000
+
+@import "media"
